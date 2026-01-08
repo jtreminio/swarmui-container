@@ -23,6 +23,10 @@ export CXXFLAGS="-I$PYBIND11_INC ${CXXFLAGS:-}"
 export CPLUS_INCLUDE_PATH=/usr/local/cuda/targets/x86_64-linux/include/cccl:${CPLUS_INCLUDE_PATH:-}
 export CPATH=/usr/local/cuda/targets/x86_64-linux/include/cccl:${CPATH}
 
+echo "=== Starting flash-attention build ==="
+source /workspace/build-flash-attention.sh
+echo "=== Finished flash-attention, exit code: $? ==="
+
 echo "=== Starting sageattention build ==="
 source /workspace/compile-sageattention.sh
 echo "=== Finished sageattention, exit code: $? ==="
