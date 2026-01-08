@@ -28,12 +28,10 @@ RUN python -m pip install --upgrade \
     torchao>=0.15.0 \
     torchsde>=0.2.6 \
     tokenizers>=0.22.2 \
-    triton>=3.5.1 \
     &&\
     python -m pip install --no-cache-dir /tmp/wheels/*.whl \
     && rm -rf /tmp/wheels
 
-ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libcuda.so.1
 ENV SWARM_NO_VENV=true
 RUN git config --global --add safe.directory '*'
 EXPOSE 7801

@@ -13,9 +13,16 @@ if [[ ! -d "torchaudio" ]]; then
     git clone https://github.com/pytorch/audio.git torchaudio
 fi
 
-cd torchaudio && git checkout release/2.9 && cd ..
+pushd sageattention && git fetch && git pull && popd
+pushd torchaudio && git checkout release/2.9 && git fetch && git pull && popd
 
-docker run --gpus all --rm -it --shm-size=512m \
+docker image build \
+    --build-arg CONTAINER_VERSION=${CONTAINER_VERSION} \
+    -f Dockerfile-wheels \
+    -t "jtreminio/swarmui-wheels:latest" .
+
+docker run --gpus all --rm -it --shm-size=32g \
     -v "${PWD}:/workspace" \
-    "nvcr.io/nvidia/pytorch:${CONTAINER_VERSION}" \
-    /bin/bash -c "bash compile-sageattention.sh && bash compile-torchaudio.sh"
+    --mount source=ccache,target=/root/.cache/ccache \
+    jtreminio/swarmui-wheels:latest \
+    /bin/bash -c "bash build-wheels.sh"
