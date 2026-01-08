@@ -21,6 +21,7 @@ ENV PATH="${DOTNET_INSTALL_DIR}:${PATH}"
 
 COPY wheels /tmp/wheels
 RUN python -m pip install --upgrade \
+    pywavelets>=1.9.0 \
     rotary_embedding_torch>=0.8.9 \
     safetensors>=0.7.0 \
     SQLAlchemy>=2.0.45 \

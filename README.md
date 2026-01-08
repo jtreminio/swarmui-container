@@ -2,8 +2,6 @@
 
 This repo builds a [SwarmUI](https://github.com/mcmonkeyprojects/SwarmUI)-ready container with:
 
-* [flash_attn @ 2.7.4](https://github.com/Dao-AILab/flash-attention)
-* [sageattention @ 2.2.0](https://github.com/thu-ml/SageAttention)
 * [sageattn @ 3 (compiled)](https://github.com/thu-ml/SageAttention/tree/main/sageattention3_blackwell)
 * [torchaudio @ 2.9.1 (compiled)](https://github.com/pytorch/audio)
 
