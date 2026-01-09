@@ -2,8 +2,15 @@
 
 This repo builds a [SwarmUI](https://github.com/mcmonkeyprojects/SwarmUI)-ready container with:
 
-* [sageattn @ 3 (compiled)](https://github.com/thu-ml/SageAttention/tree/main/sageattention3_blackwell)
-* [torchaudio @ 2.9.1 (compiled)](https://github.com/pytorch/audio)
+* [Nvidia PyTorch Container 25.12-py3](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-25-12.html)
+    * python 3.12.3
+    * cuda 13.1
+    * torch 2.10.0
+    * pytorch-triton 3.5.1
+* [sageattn3](https://github.com/thu-ml/SageAttention/tree/main/sageattention3_blackwell)
+* [sageattention 2.2.0](https://github.com/thu-ml/SageAttention/tree/main)
+* [flash-attn 2.8.3](https://github.com/Dao-AILab/flash-attention)
+* [torchaudio 2.9.1](https://github.com/pytorch/audio)
 
 It is built on top of the [nvidia PyTorch images nvcr.io/nvidia/pytorch](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/index.html).
 
@@ -23,7 +30,7 @@ Replace `/path/to/SwarmUI` with the path you've cloned SwarmUI at locally and ru
 ## All model paths as default
 
 ```bash
-docker run --gpus all --rm -it --shm-size=512m --name swarmui \
+docker run --gpus all --rm -it --shm-size=8g --name swarmui \
     -p 7801:7801 \
     -v /path/to/SwarmUI:/workspace \
     jtreminio/swarmui:latest
@@ -34,7 +41,7 @@ Then navigate to [http://localhost:7801/](http://localhost:7801/).
 ## Define different model and config paths
 
 ```bash
-docker run --gpus all --rm -it --shm-size=512m --name swarmui \
+docker run --gpus all --rm -it --shm-size=8g --name swarmui \
     -p 7801:7801 \
     -v /path/to/SwarmUI:/workspace \
     -v /path/to/local/output_directory:/workspace/Output \
@@ -43,6 +50,10 @@ docker run --gpus all --rm -it --shm-size=512m --name swarmui \
 ```
 
 Then navigate to [http://localhost:7801/](http://localhost:7801/).
+
+# More Tags
+
+See all available tags at [https://hub.docker.com/r/jtreminio/swarmui](https://hub.docker.com/r/jtreminio/swarmui).
 
 # Building
 
