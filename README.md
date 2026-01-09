@@ -30,9 +30,10 @@ Replace `/path/to/SwarmUI` with the path you've cloned SwarmUI at locally and ru
 ## All model paths as default
 
 ```bash
-docker run --gpus all --rm -it --shm-size=8g --name swarmui \
+docker run --gpus all -it -d --shm-size=8g --restart=always --name swarmui \
     -p 7801:7801 \
     -v /path/to/SwarmUI:/workspace \
+    -v swarm_pip:/usr/local/lib/python3.12/dist-packages \
     jtreminio/swarmui:latest
 ```
 
@@ -41,9 +42,10 @@ Then navigate to [http://localhost:7801/](http://localhost:7801/).
 ## Define different model and config paths
 
 ```bash
-docker run --gpus all --rm -it --shm-size=8g --name swarmui \
+docker run --gpus all -it -d --shm-size=8g --restart=always --name swarmui \
     -p 7801:7801 \
     -v /path/to/SwarmUI:/workspace \
+    -v swarm_pip:/usr/local/lib/python3.12/dist-packages \
     -v /path/to/local/output_directory:/workspace/Output \
     -v /path/to/local/wildcard_directory:/workspace/Data/Wildcards \
     jtreminio/swarmui:latest
