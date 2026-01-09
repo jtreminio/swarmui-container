@@ -20,16 +20,12 @@ RUN curl -fsSL https://dot.net/v1/dotnet-install.sh -o /tmp/dotnet-install.sh &&
 ENV PATH="${DOTNET_INSTALL_DIR}:${PATH}"
 
 COPY wheels /tmp/wheels
-RUN python -m pip install --upgrade \
-    pywavelets>=1.9.0 \
-    rotary_embedding_torch>=0.8.9 \
-    safetensors>=0.7.0 \
-    SQLAlchemy>=2.0.45 \
-    torchao>=0.15.0 \
-    torchsde>=0.2.6 \
-    tokenizers>=0.22.2 \
-    &&\
-    python -m pip install --no-cache-dir /tmp/wheels/*.whl \
+RUN python -m pip install --no-cache-dir /tmp/wheels/*.whl &&\
+    python -m pip install \
+    pywavelets \
+    SQLAlchemy \
+    rotary_embedding_torch \
+    torchsde \
     && rm -rf /tmp/wheels
 
 ENV SWARM_NO_VENV=true
