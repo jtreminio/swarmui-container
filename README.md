@@ -2,14 +2,14 @@
 
 This repo builds a [SwarmUI](https://github.com/mcmonkeyprojects/SwarmUI)-ready container with:
 
-* [Nvidia PyTorch Container 25.12-py3](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-25-12.html)
+* [Nvidia PyTorch Container 25.09-py3](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-25-09.html)
     * python 3.12.3
-    * cuda 13.1
-    * torch 2.10.0
-    * pytorch-triton 3.5.1
+    * cuda 13.0.1.012
+    * torch 2.9.0
+    * pytorch-triton 3.4.0
 * [sageattn3](https://github.com/thu-ml/SageAttention/tree/main/sageattention3_blackwell)
 * [sageattention 2.2.0](https://github.com/thu-ml/SageAttention/tree/main)
-* [flash-attn 2.8.3](https://github.com/Dao-AILab/flash-attention)
+* [flash-attn 2.7.4](https://github.com/Dao-AILab/flash-attention)
 * [torchaudio 2.9.1](https://github.com/pytorch/audio)
 
 It is built on top of the [nvidia PyTorch images nvcr.io/nvidia/pytorch](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/index.html).
@@ -34,7 +34,7 @@ docker run --gpus all -it -d --shm-size=8g --restart=always --name swarmui \
     -p 7801:7801 \
     -v /path/to/SwarmUI:/workspace \
     -v swarm_pip:/usr/local/lib/python3.12/dist-packages \
-    jtreminio/swarmui:latest
+    jtreminio/swarmui:25.09-py3
 ```
 
 Then navigate to [http://localhost:7801/](http://localhost:7801/).
@@ -48,7 +48,7 @@ docker run --gpus all -it -d --shm-size=8g --restart=always --name swarmui \
     -v swarm_pip:/usr/local/lib/python3.12/dist-packages \
     -v /path/to/local/output_directory:/workspace/Output \
     -v /path/to/local/wildcard_directory:/workspace/Data/Wildcards \
-    jtreminio/swarmui:latest
+    jtreminio/swarmui:25.09-py3
 ```
 
 Then navigate to [http://localhost:7801/](http://localhost:7801/).
@@ -62,7 +62,7 @@ See all available tags at [https://hub.docker.com/r/jtreminio/swarmui](https://h
 If you would like to build the image for yourself, simply run:
 
 ```bash
-# compiles flash_attn, sageattention, torchaudio, etc
+# compiles sageattention, torchaudio, etc
 ./step-1.sh
 # builds the Docker image for reuse
 ./step-2.sh

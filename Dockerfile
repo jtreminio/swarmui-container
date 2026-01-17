@@ -20,7 +20,10 @@ RUN curl -fsSL https://dot.net/v1/dotnet-install.sh -o /tmp/dotnet-install.sh &&
 ENV PATH="${DOTNET_INSTALL_DIR}:${PATH}"
 
 COPY wheels /tmp/wheels
-RUN python -m pip install --no-cache-dir /tmp/wheels/*.whl &&\
+RUN python -m pip install --no-cache-dir \
+    /tmp/wheels/sageattention-* \
+    /tmp/wheels/sageattn3-* \
+    /tmp/wheels/torchaudio-* &&\
     python -m pip install \
     pywavelets \
     SQLAlchemy \

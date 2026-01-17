@@ -8,5 +8,4 @@ docker image build \
     --build-arg CONTAINER_VERSION=${CONTAINER_VERSION} \
     -f Dockerfile \
     -t "jtreminio/swarmui:${CONTAINER_VERSION}" \
-    -t "jtreminio/swarmui:latest" \
     .

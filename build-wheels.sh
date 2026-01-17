@@ -28,9 +28,9 @@ source /workspace/build-flash-attention.sh
 echo "=== Finished flash-attention, exit code: $? ==="
 
 echo "=== Starting sageattention build ==="
-source /workspace/compile-sageattention.sh
+source /workspace/build-sageattention.sh
 echo "=== Finished sageattention, exit code: $? ==="
 
 echo "=== Starting torchaudio build ==="
-source /workspace/compile-torchaudio.sh
+source /workspace/build-torchaudio.sh
 echo "=== Finished torchaudio, exit code: $? ==="

@@ -25,10 +25,10 @@ pushd flash-attention/csrc && git submodule update --init --recursive --force &&
 docker image build \
     --build-arg CONTAINER_VERSION=${CONTAINER_VERSION} \
     -f Dockerfile-wheels \
-    -t "jtreminio/swarmui-wheels:latest" .
+    -t "jtreminio/swarmui-wheels:${CONTAINER_VERSION}" .
 
 docker run --gpus all --rm -it --shm-size=32g \
     -v "${PWD}:/workspace" \
     --mount source=ccache,target=/root/.cache/ccache \
-    jtreminio/swarmui-wheels:latest \
+    jtreminio/swarmui-wheels:${CONTAINER_VERSION} \
     /bin/bash -c "bash build-wheels.sh"
