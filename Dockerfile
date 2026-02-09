@@ -29,7 +29,8 @@ RUN python -m pip install --no-cache-dir \
     SQLAlchemy \
     rotary_embedding_torch \
     torchsde \
-    && rm -rf /tmp/wheels
+    && python -m pip uninstall -y pynvml &&\
+    rm -rf /tmp/wheels
 
 ENV SWARM_NO_VENV=true
 RUN git config --global --add safe.directory '*'
