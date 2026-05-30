@@ -18,8 +18,8 @@ if [[ ! -d "flash-attention" ]]; then
 fi
 
 pushd sageattention && git fetch && git pull && popd
-pushd torchaudio && git fetch && git checkout release/2.9 && git pull && popd
-pushd flash-attention && git fetch && git pull && popd
+pushd torchaudio && git fetch && git checkout v2.11.0 && popd
+pushd flash-attention && git fetch && git checkout v2.8.3 && popd
 pushd flash-attention/csrc && git submodule update --init --recursive --force && popd
 
 docker image build \

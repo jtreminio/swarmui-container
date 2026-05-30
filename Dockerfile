@@ -1,4 +1,4 @@
-ARG CONTAINER_VERSION=25.10-py3
+ARG CONTAINER_VERSION=26.04-py3
 FROM nvcr.io/nvidia/pytorch:${CONTAINER_VERSION}
 LABEL maintainer="Juan Treminio <jtreminio@gmail.com>"
 
@@ -21,16 +21,24 @@ ENV PATH="${DOTNET_INSTALL_DIR}:${PATH}"
 
 COPY wheels /tmp/wheels
 RUN python -m pip install --no-cache-dir \
+    /tmp/wheels/flash_attn-* \
     /tmp/wheels/sageattention-* \
     /tmp/wheels/sageattn3-* \
     /tmp/wheels/torchaudio-* &&\
     python -m pip install \
+    accelerate \
+    insightface \
     pywavelets \
+    onnxruntime-gpu \
+    opencv-python-headless \
+    safetensors \
     SQLAlchemy \
     rotary_embedding_torch \
     torchsde \
     && python -m pip uninstall -y pynvml &&\
     rm -rf /tmp/wheels
+# possibly remove after 26.04-py3 version
+RUN python -m pip install --no-build-isolation "transformer-engine[pytorch,core_cu13]==2.14.1"
 
 ENV SWARM_NO_VENV=true
 RUN git config --global --add safe.directory '*'

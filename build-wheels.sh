@@ -4,7 +4,7 @@ set -o pipefail
 
 export TORCH_CUDA_ARCH_LIST="12.0"
 export CUDA_ARCH_LIST="12.0"
-export MAX_JOBS=8
+export MAX_JOBS=24
 export CUDA_HOME=/usr/local/cuda
 export CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda
 export CUDNN_HOME=/usr/local/cuda
@@ -14,6 +14,10 @@ export PYTORCH_VERSION="$(python -c 'import torch; print(torch.__version__)')"
 export USE_CUDA=1
 export USE_CUDNN=1
 export USE_CUSPARSELT=1
+export CMAKE_C_COMPILER_LAUNCHER=ccache
+export CMAKE_CXX_COMPILER_LAUNCHER=ccache
+export CMAKE_CUDA_COMPILER_LAUNCHER=ccache
+export NVCC_CCACHE=1
 
 PYBIND11_INC="$(python -c 'import pybind11, sys; print(pybind11.get_include())')"
 export CPATH="$PYBIND11_INC${CPATH:+:$CPATH}"
