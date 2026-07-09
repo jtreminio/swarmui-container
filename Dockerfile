@@ -31,6 +31,7 @@ RUN python -m pip install --no-cache-dir \
     pywavelets \
     onnxruntime-gpu \
     opencv-python-headless \
+    pyyaml \
     safetensors \
     SQLAlchemy \
     rotary_embedding_torch \

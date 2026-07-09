@@ -2,10 +2,10 @@
 
 This repo builds a [SwarmUI](https://github.com/mcmonkeyprojects/SwarmUI)-ready container with:
 
-* [Nvidia PyTorch Container 26.04-py3](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-26-04.html)
+* [Nvidia PyTorch Container 26.06-py3](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-26-06.html)
     * python 3.12.3
-    * cuda 13.2.1
-    * torch 2.12
+    * cuda 13.3.33
+    * torch 2.13
     * triton 3.6.0
 * [sageattn3](https://github.com/thu-ml/SageAttention/tree/main/sageattention3_blackwell)
 * [sageattention 2.2.0](https://github.com/thu-ml/SageAttention/tree/main)
@@ -34,7 +34,7 @@ docker run --gpus all -it -d --shm-size=8g --restart=always --name swarmui \
     -p 7801:7801 \
     -v /path/to/SwarmUI:/workspace \
     -v swarm_pip:/usr/local/lib/python3.12/dist-packages \
-    jtreminio/swarmui:26.04-py3
+    jtreminio/swarmui:26.06-py3
 ```
 
 Then navigate to [http://localhost:7801/](http://localhost:7801/).
@@ -48,7 +48,7 @@ docker run --gpus all -it -d --shm-size=8g --restart=always --name swarmui \
     -v swarm_pip:/usr/local/lib/python3.12/dist-packages \
     -v /path/to/local/output_directory:/workspace/Output \
     -v /path/to/local/wildcard_directory:/workspace/Data/Wildcards \
-    jtreminio/swarmui:26.04-py3
+    jtreminio/swarmui:26.06-py3
 ```
 
 Then navigate to [http://localhost:7801/](http://localhost:7801/).
