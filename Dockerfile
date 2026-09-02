@@ -38,8 +38,6 @@ RUN python -m pip install --no-cache-dir \
     torchsde \
     && python -m pip uninstall -y pynvml &&\
     rm -rf /tmp/wheels
-# possibly remove after 26.04-py3 version
-RUN python -m pip install --no-build-isolation "transformer-engine[pytorch,core_cu13]==2.14.1"
 
 ENV SWARM_NO_VENV=true
 RUN git config --global --add safe.directory '*'
